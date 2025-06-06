@@ -1,1 +1,14 @@
-<p>work in progress</p>
+<h1>Highscores</h1>
+<ul id="highscore-list"></ul>
+<script>
+fetch('https://mongodb.mirovaassen.nl/data/cityStats') // <-- Vervang door jouw backend-URL!
+  .then(response => response.json())
+  .then(data => {
+    const list = document.getElementById('highscore-list');
+    data.forEach(item => {
+      const li = document.createElement('li');
+      li.textContent = `${item.name}: ${item.score}`;
+      list.appendChild(li);
+    });
+  });
+</script>
